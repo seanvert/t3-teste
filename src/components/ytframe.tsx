@@ -1,6 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 
-function YTiframe({videoId}) {
+function YTiframe({
+	videoId,
+	stateFunction,
+	setPlayerFunction
+}) {
 	var player;
 	const videoPlayer = useRef(player);
 	const [playerStatus, setPlayerStatus] = useState(false);
@@ -23,15 +27,26 @@ function YTiframe({videoId}) {
 		function onPlayerReady(event) {
 			event.target.setVolume(15);
 			event.target.playVideo();
+			setPlayerFunction(videoPlayer);
 		}
 
-		function onPlayerStateChange (event) {
+		function onPlayerStateChange(event) {
 			if (event.data === window.YT.PlayerState.PLAYING
 				&& !playerStatus) {
 				setPlayerStatus(true);
 			} else if (event.data === window.YT.PlayerState.ENDED) {
-				console.log("terminou");
+				/* videoPlayer.current.loadVideoById({
+				   videoId: videoId,
+				   events: {
+				   'onReady': onPlayerReady,
+				   'onStateChange': onPlayerStateChange
+				   },
+				   playerVars: {
+
+				   }
+				   }); */
 			}
+			stateFunction(event.data);
 		}
 
 		function stopVideo() {
@@ -56,19 +71,6 @@ function YTiframe({videoId}) {
 			});
 		};
 
-		if (videoId != playingVideo) {
-			videoPlayer.current.loadVideoById({
-				videoId: "QxyqR4yh1GI",
-				events: {
-					'onReady': onPlayerReady,
-					'onStateChange': onPlayerStateChange
-				},
-				playerVars: {
-
-				}
-			});
-			/* videoPlayer.current.playVideo(); */
-		}
 		return () => {
 			document.body.removeChild(script);
 		};
@@ -78,7 +80,8 @@ function YTiframe({videoId}) {
 	return (
 		<div className="video">
 			<div id="ytplayer"></div>
-			<div id="BotaoDesmutar" onClick={desmutar} className="BotaoDesmutar">
+			<div id="BotaoDesmutar" onClick={desmutar}
+				 className="btn-primary">
 				desmutar
 			</div>
 		</div>
@@ -86,16 +89,3 @@ function YTiframe({videoId}) {
 }
 
 export default YTiframe;
-
-
-// <iframe
-//  	title="home-video"
-//  	ref={videoPlayer}
-//  	id="player"
-//  	className="iframe"
-//  	frameBorder="0"
-//  	src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0`}
-//  	width="853"
-//  	height="480"
-//  	allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-// />

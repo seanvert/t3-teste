@@ -6,20 +6,38 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 import YTframe from "../components/ytframe";
 import YTQueryBox from "../components/ytQueryBox"
+
+function getIDFromYTURL (url) {
+	var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+	var match = url.match(regExp);
+	if (match && match[2].length == 11) {
+		return match[2];
+	} else {
+		//error
+		console.log("url inválida");
+	}
+}
+
 const Home: NextPage = () => {
 	const { data: videos, isLoading } = trpc.videos.getAll.useQuery();
 	const postVideo = trpc.videos.postVideo.useMutation();
 	const deleteVideo = trpc.videos.deleteVideo.useMutation();
-	const [playingVideo, setPlayingVideo] = useState("c0hKVw1jiTk");
-	const [link, setLink] = useState("");
+	const [playerState, setPlayerState] = useState(-1);
+	const [videoIndex, setVideoIndex] = useState(0);
+	const [videoPlayer, setVideoPlayer] = useState();
 
 	
-	function handleClick() {
-		setPlayingVideo("QxyqR4yh1GI");
-	}
-
 	useEffect(() => {
-	}, [playingVideo]);
+		if (videos && playerState === 0) {
+			setVideoIndex(videoIndex+1);
+			videoPlayer.current.loadVideoById({
+				videoId: getIDFromYTURL(videos[videoIndex+1].link),
+			});
+		}
+		// quando isso daqui for 0
+		// passa o vídeo index 1 pra tocar
+		// apaga o video 0
+	}, [videos, playerState]);
 
 	return (
 		<>
@@ -30,12 +48,16 @@ const Home: NextPage = () => {
 			</Head>
 			<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
 				<div
-					className="navbar"
+					className="navbar text-white"
 				>
 					<AuthShowcase />
 				</div>
 				<div className="flex flex-row">
-					<YTframe videoId={playingVideo} />
+					{isLoading ? "AAAAAAA" : <YTframe
+					stateFunction={setPlayerState}
+					setPlayerFunction={setVideoPlayer}
+												 videoId={getIDFromYTURL(videos[videoIndex].link)} />}
+					
 					<div className="text-3xl">
 						{videos?.map((vid, index) => {
 							function handleDeleteVideo () {
@@ -57,21 +79,6 @@ const Home: NextPage = () => {
 					</div>
 				</div>
 				<YTQueryBox />
-				<button
-					className="text-5xl"
-					onClick={handleClick}
-				>
-					salva db
-				</button>
-				<div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-
-					<div className="flex flex-col items-center gap-2">
-						<div className="text-2xl text-white">
-
-						</div>
-
-					</div>
-				</div>
 			</main>
 		</>
 	);
@@ -88,12 +95,15 @@ const AuthShowcase: React.FC = () => {
 	);
 
 	return (
+
 		<div className="flex flex-row items-center justify-center gap-4">
 
 				{sessionData && <span>{sessionData.user?.name}</span>}
-			{sessionData && <img alt=""
-			className="rounded-full w-12"
-								 src={sessionData.user?.image}/>}
+					<div className="avatar">
+  <div className="w-12 rounded-full">
+			{sessionData && <img alt="" src={sessionData.user?.image}/>}
+  </div>
+</div>
 
 			<button
 				className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"

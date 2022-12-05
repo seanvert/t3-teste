@@ -31,7 +31,7 @@ export const videosRouter = router({
 		try {
 			return ctx.prisma.Video.findMany({
 				orderBy: {
-					createdAt: "asc",
+					createdAt: "desc",
 				}
 			});
 		} catch(error) {
