@@ -68,8 +68,11 @@ model VerificationToken {
 
 model Video {
 	  id	String	@id @default(cuid())
+	  name	String	@db.VarChar(200)
 	  createdAt		DateTime @default(now())
-	  name			String
+	  startedPlayingAt		String @default("")
+	  started				Boolean	 @default(false)
+	  videoDuration			Int		 @default(0)
 	  link			String	@db.VarChar(200)
+	  ytID			String	@db.VarChar(12)
 }
-

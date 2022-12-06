@@ -1,759 +1,874 @@
 import React, { useState, useEffect } from "react";
-
+import { trpc } from "../utils/trpc";
 var YTAPIMock = {
 	"kind": "youtube#searchListResponse",
-	"etag": "htyHRT7F9r71melY3x1utiFYLpM",
+	"etag": "JKdQFQZ5ts6YyCTVsDKqfRxYrFE",
 	"nextPageToken": "CBQQAA",
 	"regionCode": "BR",
 	"pageInfo": {
-		"totalResults": 559456,
+		"totalResults": 915042,
 		"resultsPerPage": 20
 	},
 	"items": [
 		{
 			"kind": "youtube#searchResult",
-			"etag": "glSRU754gcoG51tNvIm3NEafFYo",
+			"etag": "GFmTDwYn66FQGDqznRbWzbpBAhw",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "x2rQzv8OWEY"
+				"videoId": "K60JEbq-fQE"
 			},
 			"snippet": {
-				"publishedAt": "2015-07-31T14:37:13Z",
-				"channelId": "UCYp3rk70ACGXQ4gFAiMr1SQ",
-				"title": "Rammstein - Engel (Official Video)",
-				"description": "Order the new album: https://rammstein.lnk.to/Zeit ▻ Website: http://www.rammstein.com ▻ RammsteinShop: ...",
+				"publishedAt": "2022-10-27T21:00:06Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "Djonga - conversa com uma menina branca (Clipe Oficial)",
+				"description": "Ouça o álbum #ODonoDoLugar em todas as plataformas: https://onerpm.link/odonodolugar Se inscreva no canal e ative o sino de ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/x2rQzv8OWEY/default.jpg",
+						"url": "https://i.ytimg.com/vi/K60JEbq-fQE/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/x2rQzv8OWEY/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/K60JEbq-fQE/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/x2rQzv8OWEY/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/K60JEbq-fQE/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Rammstein Official",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2015-07-31T14:37:13Z"
+				"publishTime": "2022-10-27T21:00:06Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "xnOoq1cG1iQtQxs996PGGfbJ0ZQ",
+			"etag": "nN3M253njrFBRtmtu5--8_gckR0",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "eSaa3vC_n2k"
+				"videoId": "W1hA7Afggkg"
 			},
 			"snippet": {
-				"publishedAt": "2015-09-25T14:00:01Z",
-				"channelId": "UCYp3rk70ACGXQ4gFAiMr1SQ",
-				"title": "Rammstein - Engel (Live from Madison Square Garden)",
-				"description": "\"Rammstein In Amerika\" (DVD & Blu-ray), a lavish package containing a major new documentary about the band, Rammstein In ...",
+				"publishedAt": "2022-12-02T15:00:11Z",
+				"channelId": "UCU06XOgERkQV7xCsrNLTf4Q",
+				"title": "Mc Hariel e Djonga - Mil Motivos (Clipe Oficial)",
+				"description": "Ouça em todas as plataformas digitais: https://lnk.to/milmotivosharieldjonga Composição: MC Hariel e Djonga Produção Musical: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/eSaa3vC_n2k/default.jpg",
+						"url": "https://i.ytimg.com/vi/W1hA7Afggkg/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/eSaa3vC_n2k/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/W1hA7Afggkg/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/eSaa3vC_n2k/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/W1hA7Afggkg/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Rammstein Official",
+				"channelTitle": "MC Hariel",
 				"liveBroadcastContent": "none",
-				"publishTime": "2015-09-25T14:00:01Z"
+				"publishTime": "2022-12-02T15:00:11Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "KEccTALo0bTDt9iHs8Pl4xRZ1QI",
+			"etag": "FBT2B3DrwlpjdF1TtIBWNJwm4fc",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "PFu8o98nnU4"
+				"videoId": "-CrD1n1loXs"
 			},
 			"snippet": {
-				"publishedAt": "2019-05-16T15:00:21Z",
-				"channelId": "UC2qemM99Sm6mnGdafrWSwCw",
-				"title": "Rammstein - Engel (Official Audio)",
-				"description": "Angel Sehnsucht album - Rammstein.",
+				"publishedAt": "2020-11-13T14:00:10Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "Djonga - Procuro Alguém",
+				"description": "PROCURO ALGUÉM DJONGA PRODUÇÃO MUSICAL COYOTE BEATZ | @Coyote Beatz | THIAGO BRAGA PRODUÇÃO ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/PFu8o98nnU4/default.jpg",
+						"url": "https://i.ytimg.com/vi/-CrD1n1loXs/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/PFu8o98nnU4/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/-CrD1n1loXs/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/PFu8o98nnU4/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/-CrD1n1loXs/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Rammstein Unofficial",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2019-05-16T15:00:21Z"
+				"publishTime": "2020-11-13T14:00:10Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "AINGUPp3ZLTZeLYOCgvWdkFmgXw",
+			"etag": "u-JA3GDeQvBzAWrNqwp3jbeBZoc",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "hNwMfgHcz5k"
+				"videoId": "Hm_np5m_YM4"
 			},
 			"snippet": {
-				"publishedAt": "2018-07-01T09:20:41Z",
-				"channelId": "UCs6GGpd9zvsYghuYe0VDFUQ",
-				"title": "Engel",
-				"description": "Provided to YouTube by Universal Music Group Engel · Rammstein Made In Germany 1995 - 2011 ℗ 2011 Vertigo/Capitol, ...",
+				"publishedAt": "2022-10-13T21:00:13Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "1. Djonga -  tôbem",
+				"description": "Ouça o álbum #ODonoDoLugar em todas as plataformas: https://onerpm.link/odonodolugar Se inscreva no canal e ative o sino de ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/hNwMfgHcz5k/default.jpg",
+						"url": "https://i.ytimg.com/vi/Hm_np5m_YM4/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/hNwMfgHcz5k/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Hm_np5m_YM4/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/hNwMfgHcz5k/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Hm_np5m_YM4/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Rammstein - Topic",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2018-07-01T09:20:41Z"
+				"publishTime": "2022-10-13T21:00:13Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "AhQlaY6Mz0ld8b7WX8wx8L5TYiw",
+			"etag": "EE9LFerIA1BIUUy6QpKY_R1xeys",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "jK6mI9bhRIc"
+				"videoId": "sEhOY55CSng"
 			},
 			"snippet": {
-				"publishedAt": "2017-01-06T19:35:18Z",
-				"channelId": "UC8b-FjvfVRm7DTbpnK26lzg",
-				"title": "Rammstein - Engel (Ao Vivo) - Legendado Português BR",
-				"description": "Texto sobre a letra de Engel: ...",
+				"publishedAt": "2019-03-13T21:00:26Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "3 . Djonga - Leal",
+				"description": "Faixa integrante do álbum \"Ladrão\". Ouça \"Ladrão\" em todas as plataformas: https://ONErpm.lnk.to/Ladrao Produção Musical: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/jK6mI9bhRIc/default.jpg",
+						"url": "https://i.ytimg.com/vi/sEhOY55CSng/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/jK6mI9bhRIc/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/sEhOY55CSng/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/jK6mI9bhRIc/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/sEhOY55CSng/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Richard Orwell",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2017-01-06T19:35:18Z"
+				"publishTime": "2019-03-13T21:00:26Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "Kwredlv-TRMF6RcIQPwIQNblKc4",
+			"etag": "okDPXYXEUi-og1MbmF6C-_Flfl4",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "jRxW5Vzeo0A"
+				"videoId": "Mx7_i-C4G0c"
 			},
 			"snippet": {
-				"publishedAt": "2017-06-23T15:18:59Z",
-				"channelId": "UCYp3rk70ACGXQ4gFAiMr1SQ",
-				"title": "Rammstein - Engel (Live at Rock im Park 2017)",
-				"description": "Order the new album: https://rammstein.lnk.to/Zeit ▻ Website: http://www.rammstein.com ▻ RammsteinShop: ...",
+				"publishedAt": "2018-03-13T21:00:07Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "5 . Djonga - SOLTO pt. Hot",
+				"description": "Faixa integrante do Albúm \"O Menino Que Queria Ser Deus - Djonga\" Direção Artística: Jacques Cigarra, Djonga Produção: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/jRxW5Vzeo0A/default.jpg",
+						"url": "https://i.ytimg.com/vi/Mx7_i-C4G0c/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/jRxW5Vzeo0A/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Mx7_i-C4G0c/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/jRxW5Vzeo0A/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Mx7_i-C4G0c/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Rammstein Official",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2017-06-23T15:18:59Z"
+				"publishTime": "2018-03-13T21:00:07Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "SIY5_gq-Va3t7AJFT5R7HxeEOKM",
+			"etag": "LKiVSBERPJm7RYmwWInt0DY-SeY",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "d8mcqmzkzHo"
+				"videoId": "km1i3jklX_A"
 			},
 			"snippet": {
-				"publishedAt": "2018-09-11T18:42:28Z",
-				"channelId": "UCqPwNY3U4v59KZbcBwAb3Tw",
-				"title": "Engel   Rammstein Lyrics and English Translation",
-				"description": "www.montagetigalop.com.",
+				"publishedAt": "2022-10-13T21:00:10Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "2. Djonga -  dom quixote",
+				"description": "Ouça o álbum #ODonoDoLugar em todas as plataformas: https://onerpm.link/odonodolugar Se inscreva no canal e ative o sino de ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/d8mcqmzkzHo/default.jpg",
+						"url": "https://i.ytimg.com/vi/km1i3jklX_A/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/d8mcqmzkzHo/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/km1i3jklX_A/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/d8mcqmzkzHo/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/km1i3jklX_A/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Ranchanaly",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2018-09-11T18:42:28Z"
+				"publishTime": "2022-10-13T21:00:10Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "ONIv8I4KVR1GDlmwXLBrksB24Uk",
+			"etag": "ZvbUgkJKiYClonn_bCp3HejOizU",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "VS07GMUcoaI"
+				"videoId": "vItmJnY-waY"
 			},
 			"snippet": {
-				"publishedAt": "2011-06-19T20:50:04Z",
-				"channelId": "UCHWKKnDXTIEmom6nTdJTKwQ",
-				"title": "Rammstein - Engel Live aus Berlin [Full HD 1080p]",
-				"description": "Like: http://www.facebook.com/DeathMetalAoExtremo Rammstein Live Aus Berlin 1998 DVD.",
+				"publishedAt": "2019-03-13T20:59:56Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "7 . Djonga - Bença",
+				"description": "Faixa integrante do álbum \"Ladrão\". Ouça \"Ladrão\" em todas as plataformas: https://ONErpm.lnk.to/Ladrao Produção Musical: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/VS07GMUcoaI/default.jpg",
+						"url": "https://i.ytimg.com/vi/vItmJnY-waY/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/VS07GMUcoaI/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/vItmJnY-waY/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/VS07GMUcoaI/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/vItmJnY-waY/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Death Metal Ao Extremo",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2011-06-19T20:50:04Z"
+				"publishTime": "2019-03-13T20:59:56Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "nFzW_6amSZA5anF4PJVC2zVIaEM",
+			"etag": "FroSSsOV939CEMG4JU0M9Vj-De8",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "hj4K_DI7oMM"
+				"videoId": "GuYgMTAVVI0"
 			},
 			"snippet": {
-				"publishedAt": "2022-04-16T03:52:05Z",
-				"channelId": "UC4QBCWi95rZ_CD3glzNVEZg",
-				"title": "Rammstein - Engel (Live from Madison Square Garden)",
-				"description": "Rammstein in Amerika is the fifth DVD and third live recording of the German industrial metal band Rammstein. It documents the ...",
+				"publishedAt": "2018-03-13T21:00:18Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "2 . Djonga - JUNHO DE 94",
+				"description": "Faixa integrante do Albúm \"O Menino Que Queria Ser Deus - Djonga\" Produção: CoyoteBeats, DJ Cost Voz: Djonga, Jeffinho ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/hj4K_DI7oMM/default.jpg",
+						"url": "https://i.ytimg.com/vi/GuYgMTAVVI0/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/hj4K_DI7oMM/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/GuYgMTAVVI0/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/hj4K_DI7oMM/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/GuYgMTAVVI0/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "X_Gerish_X",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-04-16T03:52:05Z"
+				"publishTime": "2018-03-13T21:00:18Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "TVPDaz5Ju00pOp_sn2EoeOrxaWE",
+			"etag": "0p9UnHd_lmhjn0aU9Jr3s5hCxOQ",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "Ix86v0ylY6o"
+				"videoId": "qxXr2CYjHl8"
 			},
 			"snippet": {
-				"publishedAt": "2019-11-09T16:01:39Z",
-				"channelId": "UC8b-FjvfVRm7DTbpnK26lzg",
-				"title": "Rammstein - Engel - Legendado Português BR",
-				"description": "Um texto meu sobre a música: ...",
+				"publishedAt": "2020-03-13T21:00:53Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "6. Djonga - Hoje Não",
+				"description": "Voz: Djonga Produção: Coyote Beatz | @Coyote Beatz Mix/Master: Arthur Luna Produção Executiva: Ceia Ent. | @Ceia Ent.",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/Ix86v0ylY6o/default.jpg",
+						"url": "https://i.ytimg.com/vi/qxXr2CYjHl8/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/Ix86v0ylY6o/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/qxXr2CYjHl8/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/Ix86v0ylY6o/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/qxXr2CYjHl8/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Richard Orwell",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2019-11-09T16:01:39Z"
+				"publishTime": "2020-03-13T21:00:53Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "niCtaDmueosrwrqhp5Q9YeaiY1w",
+			"etag": "ZeHn3XHrthI-QW2B4gXHcRuUEpI",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "OmQ2712GP_o"
+				"videoId": "TJc3AomIUw0"
 			},
 			"snippet": {
-				"publishedAt": "2022-08-16T15:44:19Z",
-				"channelId": "UC8b-FjvfVRm7DTbpnK26lzg",
-				"title": "Rammstein - Engel (Live aus Berlin) - Legendado Português BR",
-				"description": "https://www.instagram.com/richard_orwell/ Tradução em Português BR de Engel (do Rammstein) em HQ. All rights belong to their ...",
+				"publishedAt": "2022-10-14T07:11:20Z",
+				"channelId": "UCqOQu7kLWXAo9j2rQhxb7uA",
+				"title": "DJONGA - O DONO DO LUGAR (ÁLBUM COMPLETO)",
+				"description": "DJONGA #ODonoDoLugar SE VOCÊ GOSTOU DO VIDEO CURTE, COMENTA, COMPARTILHA E INSCREVE-SE NO CANAL ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/OmQ2712GP_o/default.jpg",
+						"url": "https://i.ytimg.com/vi/TJc3AomIUw0/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/OmQ2712GP_o/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/TJc3AomIUw0/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/OmQ2712GP_o/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/TJc3AomIUw0/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Richard Orwell",
+				"channelTitle": "Papidon Records",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-08-16T15:44:19Z"
+				"publishTime": "2022-10-14T07:11:20Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "aS_frDlJ1PXMdhj7sJKpYViMtM4",
+			"etag": "rMaGvvjXGJBneTxiv_1OZUTlQjU",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "E_JWJLH4khw"
+				"videoId": "hTUEjPmX0tE"
 			},
 			"snippet": {
-				"publishedAt": "2013-08-26T11:17:47Z",
-				"channelId": "UCOBt3hkRjJps24bFY3ifC0A",
-				"title": "Rammstein - Engel (lyrics) HD",
-				"description": "More Video http://temiipl.manifo.com/",
+				"publishedAt": "2018-05-18T15:00:19Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "Djonga - JUNHO DE 94 (Clipe Oficial)",
+				"description": "Direção: Gabriel Solano Roteiro: Djonga Assist. de Direção: Roberto Riva Direção de Fotografia: Gabriel Solano e Roberto Riva ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/E_JWJLH4khw/default.jpg",
+						"url": "https://i.ytimg.com/vi/hTUEjPmX0tE/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/E_JWJLH4khw/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/hTUEjPmX0tE/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/E_JWJLH4khw/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/hTUEjPmX0tE/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "3temii",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2013-08-26T11:17:47Z"
+				"publishTime": "2018-05-18T15:00:19Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "mBW6DFebgedEhkrcssmYoBblVdk",
+			"etag": "2O5fX_Rf0l3345yamb0UbpA_6Hg",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "CmrSLwotDms"
+				"videoId": "0D84LFKiGbo"
 			},
 			"snippet": {
-				"publishedAt": "2022-06-19T15:54:47Z",
-				"channelId": "UC8b-FjvfVRm7DTbpnK26lzg",
-				"title": "Rammstein - Engel (In Amerika) - Legendado Português BR",
-				"description": "https://www.instagram.com/richard_orwell/ Tradução em Português BR de Engel (do Rammstein) em HQ. All rights belong to their ...",
+				"publishedAt": "2017-07-25T12:56:10Z",
+				"channelId": "UCqrFwa5vueOTzGZ7NSlnvlQ",
+				"title": "Perfil #22 - Djonga - Olho de Tigre (Prod. Malive/Slim)",
+				"description": "Uma realização Pineapple Supply e Brainstorm Estúdio. Perfil é um projeto semanal onde beatmakers deixam seus beats em ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/CmrSLwotDms/default.jpg",
+						"url": "https://i.ytimg.com/vi/0D84LFKiGbo/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/CmrSLwotDms/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/0D84LFKiGbo/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/CmrSLwotDms/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/0D84LFKiGbo/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Richard Orwell",
+				"channelTitle": "PineappleStormTV",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-06-19T15:54:47Z"
+				"publishTime": "2017-07-25T12:56:10Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "iVlT7UR2RTUbmSIb8VaznDqpGbI",
+			"etag": "PFj7EUI1f4pWWWxNUyZL7zp7e9g",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "tIcOIc7AFww"
+				"videoId": "ZVOTMkuAtKQ"
 			},
 			"snippet": {
-				"publishedAt": "2007-11-14T15:24:47Z",
-				"channelId": "UCNzxFXGE-GzDOtqBhXjJlCg",
-				"title": "Evangelion : Rammstein - Engel",
-				"description": "Neon Genesis Evangelion AMV (not made by me) Music: Rammstein - Engel.",
+				"publishedAt": "2022-01-14T12:00:15Z",
+				"channelId": "UC4UUYhqdOqXYm9qsi9htmBA",
+				"title": "Djonga - As 10 Melhores Músicas - CD Completo - Full Álbum",
+				"description": "Djonga - As 10 Melhores Músicas - CD Completo - Full Álbum [00:00] - Obstinado [04:11] - Hoje Não [08:01] - Junho De 94 [13:30] ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/tIcOIc7AFww/default.jpg",
+						"url": "https://i.ytimg.com/vi/ZVOTMkuAtKQ/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/tIcOIc7AFww/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/ZVOTMkuAtKQ/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/tIcOIc7AFww/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/ZVOTMkuAtKQ/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Mowie Berlin",
+				"channelTitle": "Dj BRA",
 				"liveBroadcastContent": "none",
-				"publishTime": "2007-11-14T15:24:47Z"
+				"publishTime": "2022-01-14T12:00:15Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "ogIVXy3TtlfBm3w3vA0kCrkZpsc",
+			"etag": "52ymABdT6SeE3iR_h-7v2U2gHD0",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "nsNXT1Tw7vU"
+				"videoId": "Gi-GlK26Nqk"
 			},
 			"snippet": {
-				"publishedAt": "2022-11-11T15:00:08Z",
-				"channelId": "UCK5G-rUDSKKUXeMkrL7Bs1w",
-				"title": "It&#39;s that whistle! Vocal ANALYSIS of Rammstein&#39;s &quot;Engel&quot; live performance at Madison Square Garden!",
-				"description": "It's not shocking that one of my favorite reactions so far has been Rammstein's Till Lindeman performing \"Mein Herz Brennt\" to the ...",
+				"publishedAt": "2021-03-13T15:02:48Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "8. Djonga - Eu",
+				"description": "Voz: Djonga Produção: @Coyote Beatz Mixado no Estúdio Cia dos Técnicos por Arthur Luna Masterizado por Ricardo \"Menudo\" ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/nsNXT1Tw7vU/default.jpg",
+						"url": "https://i.ytimg.com/vi/Gi-GlK26Nqk/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/nsNXT1Tw7vU/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Gi-GlK26Nqk/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/nsNXT1Tw7vU/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Gi-GlK26Nqk/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "The Charismatic Voice",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-11-11T15:00:08Z"
+				"publishTime": "2021-03-13T15:02:48Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "t0WHlvb2kMKdoEysZ5P1lE4xX2E",
+			"etag": "BpMqE0HJiIgZ8-x7yTEM86zU0Hw",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "jwPEK3G6Y8g"
+				"videoId": "Nrrj1Z7nY64"
 			},
 			"snippet": {
-				"publishedAt": "2022-05-21T10:05:49Z",
-				"channelId": "UCXTfdErr0yEbNdqnv4XO8bw",
-				"title": "Rammstein LIVE Engel (Skala &amp; Kolacny version) - Leipzig, Germany 2022 (May 20th)",
-				"description": "Rammstein 2022-05-20 Leipzig, Germany Red Bull Arena Skala & Kolacny version.",
+				"publishedAt": "2018-08-20T15:00:53Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "Djonga - A Música da Mãe (Clipe Oficial)",
+				"description": "Ouça em todas as plataformas: https://ONErpm.lnk.to/Djonga Direção : Naio Rezende e Djonga Co-Direção: Luanna Exner ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/jwPEK3G6Y8g/default.jpg",
+						"url": "https://i.ytimg.com/vi/Nrrj1Z7nY64/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/jwPEK3G6Y8g/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Nrrj1Z7nY64/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/jwPEK3G6Y8g/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/Nrrj1Z7nY64/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "jederlacht",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-05-21T10:05:49Z"
+				"publishTime": "2018-08-20T15:00:53Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "u1yCkfbalaWMv0RgtEin5QtYIA8",
+			"etag": "iU_wUFx9iNUOj1NIeTOw98AhseY",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "QQo5JFQpn3Q"
+				"videoId": "GaNgrC_dZ28"
 			},
 			"snippet": {
-				"publishedAt": "2022-10-03T20:44:41Z",
-				"channelId": "UCM4w1ib6UR-nclaSXZ5IFHg",
-				"title": "Engel - Rammstein Live Mexico 2022",
-				"description": "Foro Sol 02/10/2022.",
+				"publishedAt": "2019-03-13T21:00:10Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "5 . Djonga - Tipo pt. MC Kaio",
+				"description": "Faixa integrante do álbum \"Ladrão\". Ouça \"Ladrão\" em todas as plataformas: https://ONErpm.lnk.to/Ladrao Produção Musical: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/QQo5JFQpn3Q/default.jpg",
+						"url": "https://i.ytimg.com/vi/GaNgrC_dZ28/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/QQo5JFQpn3Q/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/GaNgrC_dZ28/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/QQo5JFQpn3Q/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/GaNgrC_dZ28/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Dan Hdz",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-10-03T20:44:41Z"
+				"publishTime": "2019-03-13T21:00:10Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "HTekD4wPL7Xe9G-jb-7XW5QqcQQ",
+			"etag": "epu2TEd06YnJ02ftgp6D_6FUQ6k",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "Qdjskg6soW0"
+				"videoId": "ayKblEzrfbQ"
 			},
 			"snippet": {
-				"publishedAt": "2020-11-28T16:00:09Z",
-				"channelId": "UCF1C0D6_iBHcYigsPrzvXMQ",
-				"title": "RAMMSTEIN - Engel | GUITAR COVER",
-				"description": "Rammstein - Engel - Album: Sehnsucht - guitar cover Jassy J =) Happy metal weekend everyone! This one is a Rammstein classic ...",
+				"publishedAt": "2021-06-03T15:00:02Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "Djonga - Ea$y Money (Clipe Oficial)",
+				"description": "Produção musical: @Coyote Beatz Mix/Master: @drakoz Direção: Túlio Cipó e Djonga Segunda Câmera: Manolo Drone Racer: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/Qdjskg6soW0/default.jpg",
+						"url": "https://i.ytimg.com/vi/ayKblEzrfbQ/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/Qdjskg6soW0/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/ayKblEzrfbQ/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/Qdjskg6soW0/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/ayKblEzrfbQ/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "JJ's One Girl Band",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2020-11-28T16:00:09Z"
+				"publishTime": "2021-06-03T15:00:02Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "a6kFsQC4Xnhy1ymUYyV2KoZvPUg",
+			"etag": "QP3zRRhx-diRYfUMbpIv6ohz9_E",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "ZruYV90M4ts"
+				"videoId": "tjD5_9idOVs"
 			},
 			"snippet": {
-				"publishedAt": "2014-08-24T22:13:14Z",
-				"channelId": "UCgzBLnRKIMm5nwSMuBOvHCA",
-				"title": "Rammstein - Engel (English Version)",
-				"description": "",
+				"publishedAt": "2018-03-13T21:00:14Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "3 . Djonga - UFA pt. Sidoka &amp; Sant",
+				"description": "Faixa integrante do Albúm \"O Menino Que Queria Ser Deus - Djonga\" Direção Artística: Jacques Cigarra, Djonga Produção: ...",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/ZruYV90M4ts/default.jpg",
+						"url": "https://i.ytimg.com/vi/tjD5_9idOVs/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/ZruYV90M4ts/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/tjD5_9idOVs/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/ZruYV90M4ts/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/tjD5_9idOVs/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Kamin corp",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2014-08-24T22:13:14Z"
+				"publishTime": "2018-03-13T21:00:14Z"
 			}
 		},
 		{
 			"kind": "youtube#searchResult",
-			"etag": "svS7gPezx2hRsgTBpE3jjlaLLnw",
+			"etag": "btQ7e5ZPfd1r0tGH6lCj1C8zYaA",
 			"id": {
 				"kind": "youtube#video",
-				"videoId": "wM8ew2YGxq8"
+				"videoId": "doRcD6DlgsM"
 			},
 			"snippet": {
-				"publishedAt": "2022-09-24T19:12:47Z",
-				"channelId": "UClXVOr5c2ftWwfFudpk9xHQ",
-				"title": "Rammstein- Engel (Live in Los Angeles, CA) (Sept 23, 2022)",
-				"description": "Live at the LA Memorial Coliseum in Los Angeles, CA Day 1. Performing Engel in a soft classical piano version in the pit.",
+				"publishedAt": "2020-03-13T20:59:58Z",
+				"channelId": "UCNVifsYkXq5yzylNGvi1JJA",
+				"title": "1. Djonga - O Cara de Óculos pt. Bia Nogueira",
+				"description": "Voz: Djonga e Bia Nogueira Produção: Coyote Beatz | @Coyote Beatz Mix/Master: Arthur Luna Produção Executiva: Ceia Ent.",
 				"thumbnails": {
 					"default": {
-						"url": "https://i.ytimg.com/vi/wM8ew2YGxq8/default.jpg",
+						"url": "https://i.ytimg.com/vi/doRcD6DlgsM/default.jpg",
 						"width": 120,
 						"height": 90
 					},
 					"medium": {
-						"url": "https://i.ytimg.com/vi/wM8ew2YGxq8/mqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/doRcD6DlgsM/mqdefault.jpg",
 						"width": 320,
 						"height": 180
 					},
 					"high": {
-						"url": "https://i.ytimg.com/vi/wM8ew2YGxq8/hqdefault.jpg",
+						"url": "https://i.ytimg.com/vi/doRcD6DlgsM/hqdefault.jpg",
 						"width": 480,
 						"height": 360
 					}
 				},
-				"channelTitle": "Anthony Zuniga",
+				"channelTitle": "Djonga",
 				"liveBroadcastContent": "none",
-				"publishTime": "2022-09-24T19:12:47Z"
+				"publishTime": "2020-03-13T20:59:58Z"
 			}
 		}
 	]
 }
 
-export function YTQueryBox () {
-	const [query, setQuery] = useState("");
-	const [keywordString, setKeywordString] = useState("");
-	const [ytResults, setYTResults] = useState([]);
+enum queriesTypesYT {
+    Text,
+    Link,
+}
+
+function getIDFromYTURL(url: String) {
+    var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        //error
+        console.log("url inválida");
+        return "";
+    }
+}
+
+async function fetchVideoSnippetFromID (videoId: String, setState, setLoading) {
+	const url =`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.YOUTUBE_API_KEY}`;
+	const response = await fetch(url)
+		.then((response) => {
+			response.json()
+		})
+		.then((json) => {
+			console.log("json", json);
+			setState(json.snippet);
+			setLoading(false);
+		})
+}
+
+export function YTQueryBox() {
+    const [query, setQuery] = useState("");
+    const postVideo = trpc.videos.postVideo.useMutation();
+    const [keywordString, setKeywordString] = useState("");
+    const [ytResults, setYTResults] = useState([]);
+    const [ytQueryType, setYTQueryType] = useState(queriesTypesYT.Text);
+	const [videoSnippet, setVideoSnippet] = useState();
+	const [isLoading, setLoading] = useState(true);
 	
-	function handleSubmit(e) {
-		e.preventDefault();
-		/* postVideo.mutate({
-		   name:  "pri leite",
-		   link: link,
-		   }); */
-	}
+    function handleSubmit(e) {
+        e.preventDefault();
+        switch (ytQueryType) {
+            case queriesTypesYT.Text:
+                console.log("text");
+                break;
+            case queriesTypesYT.Link:
+                const ytVideoID = getIDFromYTURL(query);
+				/* fetchVideoSnippetFromID(query, setVideoSnippet, setLoading)
+				   .then(() => { */
+				/* fetch name, duration yt api */
+				postVideo.mutate({
+					name: "asd",
+					link: query,
+					ytID: ytVideoID,
+				});
+				/* }); */
 
-	async function queryYTAPI (key) {
-		console.log("key", key)
-		setKeywordString(key.replace(/\s/g, "+"));
-		var url = await `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
-		console.log(url);
-	}
-	
-	function handleChange(key) {
-		setQuery(key)
-		console.log(key);
-		return queryYTAPI(key)
+                break;
+            default:
+                console.log("default");
+                break;
+        }
+
+    }
+
+    function handleSelectQuery(e) {
+        if (e.target.value === "Texto") {
+            setYTQueryType(queriesTypesYT.Text);
+        } else {
+            setYTQueryType(queriesTypesYT.Link);
+        }
+    }
+
+    async function queryYTAPI(key: String) {
+        setKeywordString(key.replace(/\s/g, "+"));
+        var url = `https://www.googleapis.com/youtube/v3/search?part=snippet,contentDetails&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
+		
+    }
+
+    async function handleChange(key: String) {
+        setQuery(key);
+        // queryYTAPI(key)
+
+        var results = YTAPIMock;
+        /* await fetch(url); */
+        /* results = await results
+           .json()
+           .then((json) => {
+
+           }); */
+        setYTResults(results.items);
+    }
+
+    function completionResults(ytResults) {
+        if (ytResults.length > 0
+            && ytQueryType === queriesTypesYT.Text) {
+            return (
+                <div
+                    className="inline-block relative text-black"
+                >
+                    {ytResults.map((result, index) => {
+                        function handleClick() {
+							postVideo.mutate({
+								name: result.snippet.title,
+								link: "https://www.youtube.com/watch?v=" + result.id.videoId,
+								ytID: result.id.videoId,
+							})
+                        }
+
+                        if (index < 5) {
+                            return (
+                                <div onClick={handleClick}
+                                     className="flex flex-row border-y-0 hover:bg-lime-700">
+									<div>
+										<img alt=""
+											 src={result.snippet.thumbnails.default.url} />
+									</div>
+									<div
+										className="flex justify-center items-center"
+									>
+										<p
+											className=""
+										>
+											{result.snippet.title}
+										</p>
+									</div>
+                                </div>
+
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
+                </div>
+            );
+
+        } else {
+            return null;
+        }
+    }
+
+    useEffect(() => { },
+			  [JSON.stringify(ytResults)])
+
+    return (
+        <div className="text-white">
+            <div className="form-control">
+                <div className="input-group flex-col">
+                    <div className="flex">
+                        <select
+                            onChange={(e) => handleSelectQuery(e)}
+                            className="text-white select select-bordered">
+                            <option disabled>Tipo de busca</option>
+                            <option defaultValue>Texto</option>
+                            <option>Link</option>
+                        </select>
+
+                        <input
+                            type="text"
+                            placeholder="Busca…"
+                            onChange={(e) => handleChange(e.target.value)}
+                            className="input input-bordered text-white" />
+
+                        <button
+                            onClick={(e) => handleSubmit(e)}
+                            className="btn btn-square">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </button>
+                    </div>
+                    {completionResults(ytResults)}
+                </div>
+            </div>
 
 
-		var results = YTAPIMock;
-		/* await fetch(url); */
-		/* results = await results.json(); */
-		/* console.log(results.items); */
-		setYTResults(results.items);
-	}
-	
-	return (
-		<div className="text-white">
-			<div className="form-control">
-				<div className="input-group">
-					<select className="text-black select select-bordered">
-						<option disabled>Tipo de busca</option>
-						<option selected>Texto</option>
-						<option>Link</option>
-					</select>
-					<input type="text"
-						   placeholder="Busca…"
-					onChange={(e) => handleChange(e.target.value)}
-						   className="input input-bordered text-black" />
-					<button
-						onClick={(e) => handleSubmit(e)}
-						className="btn btn-square">
-						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-					</button>
-				</div>
-			</div>
-
-			{ytResults?.map((result, index) => {
-				<div>
-					{result.snippet.description}
-				</div>
-			})}
-		</div>
-	);
+        </div>
+    );
 }
 
 export default YTQueryBox;
