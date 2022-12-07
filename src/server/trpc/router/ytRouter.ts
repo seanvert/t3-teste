@@ -22,6 +22,19 @@ export const ytRouter = router({
         greeting: `Hello ${input?.text ?? "world"}`,
       };
     }),
+	queryYTVideos: publicProcedure
+		.input(z.object({
+			query: z.string(),
+		}))
+		.query(({ input }) =>
+			{
+			const keywordString = input?.query.replace(/\s/g, "+");
+			const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
+				console.log(url)
+				return "lol";
+			// const response = await fetch(url)
+			// return response;
+		}),
 	postVideo: publicProcedure
 		.input( z.object({
 			name: z.string(),

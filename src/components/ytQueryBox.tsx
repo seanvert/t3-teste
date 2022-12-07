@@ -710,18 +710,6 @@ function getIDFromYTURL(url: String) {
     }
 }
 
-async function fetchVideoSnippetFromID (videoId: String, setState, setLoading) {
-	const url =`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.YOUTUBE_API_KEY}`;
-	const response = await fetch(url)
-		.then((response) => {
-			response.json()
-		})
-		.then((json) => {
-			console.log("json", json);
-			setState(json.snippet);
-			setLoading(false);
-		})
-}
 
 export function YTQueryBox() {
     const [query, setQuery] = useState("");
@@ -766,15 +754,8 @@ export function YTQueryBox() {
         }
     }
 
-    async function queryYTAPI(key: String) {
-        setKeywordString(key.replace(/\s/g, "+"));
-        var url = `https://www.googleapis.com/youtube/v3/search?part=snippet,contentDetails&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
-		
-    }
-
     async function handleChange(key: String) {
         setQuery(key);
-        // queryYTAPI(key)
 
         var results = YTAPIMock;
         /* await fetch(url); */
@@ -786,55 +767,8 @@ export function YTQueryBox() {
         setYTResults(results.items);
     }
 
-    function completionResults(ytResults) {
-        if (ytResults.length > 0
-            && ytQueryType === queriesTypesYT.Text) {
-            return (
-                <div
-                    className="inline-block relative text-black"
-                >
-                    {ytResults.map((result, index) => {
-                        function handleClick() {
-							postVideo.mutate({
-								name: result.snippet.title,
-								link: "https://www.youtube.com/watch?v=" + result.id.videoId,
-								ytID: result.id.videoId,
-							})
-                        }
 
-                        if (index < 5) {
-                            return (
-                                <div onClick={handleClick}
-                                     className="flex flex-row border-y-0 hover:bg-lime-700">
-									<div>
-										<img alt=""
-											 src={result.snippet.thumbnails.default.url} />
-									</div>
-									<div
-										className="flex justify-center items-center"
-									>
-										<p
-											className=""
-										>
-											{result.snippet.title}
-										</p>
-									</div>
-                                </div>
-
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
-                </div>
-            );
-
-        } else {
-            return null;
-        }
-    }
-
-    useEffect(() => { },
+    useEffect(() => {},
 			  [JSON.stringify(ytResults)])
 
     return (
@@ -862,13 +796,54 @@ export function YTQueryBox() {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                         </button>
                     </div>
-                    {completionResults(ytResults)}
+					<CompletionResults ytResults={ytResults}
+					postVideo={postVideo}
+					ytQueryType={ytQueryType} />
                 </div>
             </div>
-
-
         </div>
     );
-}
+};
 
 export default YTQueryBox;
+
+function CompletionResults({ytResults, ytQueryType, postVideo}) {
+    if (ytResults.length > 0
+        && ytQueryType === queriesTypesYT.Text) {
+        return (
+            <div className="inline-block relative text-black" >
+                {ytResults.map((result, index) => {
+                    function handleClick() {
+						postVideo.mutate({
+							name: result.snippet.title,
+							link: "https://www.youtube.com/watch?v=" + result.id.videoId,
+							ytID: result.id.videoId,
+						});
+                    };
+
+                    if (index < 5) {
+                        return (
+                            <div onClick={handleClick}
+                                 className="flex flex-row border-y-0 hover:bg-lime-700">
+								<div>
+									<img alt=""
+									className="mask mask-squircle"
+										 src={result.snippet.thumbnails.default.url} />
+								</div>
+								<div className="flex justify-center items-center">
+										{result.snippet.title}
+								</div>
+                            </div>
+
+                        );
+                    } else {
+                        return null;
+                    }
+                })}
+            </div>
+        );
+
+    } else {
+        return null;
+    }
+}

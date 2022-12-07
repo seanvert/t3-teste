@@ -18,32 +18,10 @@ function getIDFromYTURL (url: String) {
 	}
 }
 
-async function fetchVideoSnippetFromID (videoId: String, setState, setLoading) {
-	const url =`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.YOUTUBE_API_KEY}`;
-	const response = await fetch(url)
-		.then((response) => {
-			response.json()
-		})
-		.then((json) => {
-			setState(json);
-			setLoading(false);
-		})
-}
-
-async function queryYTAPI(key: String, setState, setLoading) {
-    const keywordString = key.replace(/\s/g, "+");
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
-	const response = await fetch(url)
-		.then((response) => {
-			response.json()
-		})
-		.then((json) => {
-			setState(json);
-			setLoading(false);
-		});
-};
-
 const Home: NextPage = () => {
+	const ytQuery = trpc.yt.queryYTVideos.useQuery({
+		query: "testes testes mais testes"
+	});
 	const { data: videos, isLoading, refetch } = trpc.videos.getAll.useQuery();
 	const postVideo = trpc.videos.postVideo.useMutation();
 	const deleteVideo = trpc.videos.deleteVideo.useMutation();
@@ -52,6 +30,7 @@ const Home: NextPage = () => {
 	const [videoIndex, setVideoIndex] = useState(0);
 	const [videoPlayer, setVideoPlayer] = useState();
 	const [playerUpdated, setPlayerUpdated] = useState(false);
+
 	
 	useEffect(() => {
 		/* if the player is paused, it resets player state */
@@ -109,11 +88,10 @@ const Home: NextPage = () => {
 	}, [JSON.stringify(videos), playerState, videoPlayer, isLoading]);
 
 	function teste () {
+
 		console.log(isLoading);
 		console.log(videos);
 		videoPlayer.current.seekTo(10);
-		const teste = queryYTAPI("emacs conference")
-			.then((json) => console.log(json));
 	}
 
 	return (
@@ -132,12 +110,13 @@ const Home: NextPage = () => {
 						testes
 					</button>
 				</div>
-				<div className="flex flex-row">
+				<div className="flex flex-row grow justify-items-center items-center">
 					{(isLoading
 						|| typeof(videos) === "undefined"
 						|| videos.length === 0
-					) ? <div className="radial-progress" style={{"--value":100}}>100%</div>
- :
+					) ?
+					 <div className="radial-progress" style={{"--value":100}}>100%</div>
+					:
 					 <YTframe
 					 stateFunction={setPlayerState}
 					 setPlayerFunction={setVideoPlayer}
