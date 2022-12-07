@@ -4,7 +4,12 @@ import { router, publicProcedure, protectedProcedure } from "../trpc";
 async function queryYTAPI(key: String) {
     const keywordString = key.replace(/\s/g, "+");
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
-	const response = await fetch(url)
+	const response = await fetch(key)
+	return response;
+};
+
+async function queryYT(key: String) {
+	const response = await fetch(key)
 	return response;
 };
 
@@ -28,12 +33,19 @@ export const ytRouter = router({
 		}))
 		.query(({ input }) =>
 			{
-			const keywordString = input?.query.replace(/\s/g, "+");
-			const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
-				console.log(url)
-				return "lol";
-			// const response = await fetch(url)
-			// return response;
+				const keywordString = `${input?.query}`.replace(/\s/g, "+");
+				const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keywordString}&type=video&key=${process.env.YOUTUBE_API_KEY}`;
+				const responses = fetch(url)
+					.then((response) => {
+						console.log(response);
+						return response.json()
+					})
+					.then((json) => {
+						console.log(json);
+						return json;
+					})
+				
+				return responses;
 		}),
 	postVideo: publicProcedure
 		.input( z.object({

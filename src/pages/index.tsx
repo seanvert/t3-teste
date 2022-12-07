@@ -88,10 +88,10 @@ const Home: NextPage = () => {
 	}, [JSON.stringify(videos), playerState, videoPlayer, isLoading]);
 
 	function teste () {
-
-		console.log(isLoading);
-		console.log(videos);
-		videoPlayer.current.seekTo(10);
+		console.log("query", ytQuery.data);
+		
+		/* console.log(isLoading);
+		   console.log(videos); */
 	}
 
 	return (
