@@ -19,11 +19,11 @@ function getIDFromYTURL (url: String) {
 }
 
 const Home: NextPage = () => {
-	const ytQuery = trpc.yt.queryYTVideos.useQuery({
-		query: "testes testes mais testes"
+	const [queryYT, setQueryYT] = useState("");
+	const {data: ytQueryResponseData, refetch: refetchYT} = trpc.yt.queryYTVideos.useQuery({
+		query: queryYT
 	});
 	const { data: videos, isLoading, refetch } = trpc.videos.getAll.useQuery();
-	const postVideo = trpc.videos.postVideo.useMutation();
 	const deleteVideo = trpc.videos.deleteVideo.useMutation();
 	const playVideo = trpc.videos.playVideo.useMutation();
 	const [playerState, setPlayerState] = useState(-1);
@@ -87,9 +87,12 @@ const Home: NextPage = () => {
 
 	}, [JSON.stringify(videos), playerState, videoPlayer, isLoading]);
 
+
+	
 	function teste () {
-		console.log("query", ytQuery.data);
-		
+		(() => setQueryYT("emacs conference"));
+		refetch()
+		console.log("query", ytQueryResponseData);
 		/* console.log(isLoading);
 		   console.log(videos); */
 	}
@@ -124,10 +127,10 @@ const Home: NextPage = () => {
 					}
 					
 					<div className="text-3xl text-white">
-						{videos?.map((vid, index) => {
+						{videos?.map((vid, index: number) => {
 							function handleDeleteVideo () {
 								deleteVideo.mutate({
-									id: vid.id
+									id: vid.id,
 								})
 							}
 							return (

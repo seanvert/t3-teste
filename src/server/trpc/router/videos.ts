@@ -10,7 +10,7 @@ export const videosRouter = router({
         greeting: `Hello ${input?.text ?? "world"}`,
       };
     }),
-	postVideo: publicProcedure
+	postVideo: protectedProcedure
 		.input( z.object({
 			name: z.string(),
 			link: z.string(),
@@ -54,7 +54,7 @@ export const videosRouter = router({
 			console.log("error", error);
 		}
 	}),
-	deleteVideo: publicProcedure
+	deleteVideo: protectedProcedure
 		.input( z.object({
 			id: z.string()
 		}))
