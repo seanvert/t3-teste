@@ -18,13 +18,37 @@ export const videosRouter = router({
 		}))
 		.mutation(({ ctx, input }) => {
 			console.log("input", input);
-			return ctx.prisma.Video.create({
-				data: {
-					name: `${input?.name}`,
-					link: `${input?.link}`,
-					ytID: `${input?.ytID}`,
-				}
-			})
+			const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${input?.ytID}&key=${process.env.YOUTUBE_API_KEY}`;
+			const fetchYTData = fetch(url)
+				.then((response) => {
+					return response.json();
+				})
+				.then ((json) => {
+					if (json.pageInfo.totalResults > 0) 
+						return json.items[0]
+
+				})
+				.then((json) => {
+					console.log(json.snippet.title)
+					if(typeof(json.snippet.title) != "undefined") {
+						return ctx.prisma.Video.create({
+							data: {
+								name: json.snippet.title,
+								link: `${input?.link}`,
+								ytID: `${input?.ytID}`,
+							}
+						})
+					} else {
+						return ctx.prisma.Video.create({
+							data: {
+								name: `${input?.name}`,
+								link: `${input?.link}`,
+								ytID: `${input?.ytID}`,
+							}
+						})
+					}
+				})
+
 		}),
 	playVideo: publicProcedure
 		.input( z.object({
