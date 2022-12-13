@@ -188,53 +188,40 @@ export default Home;
 
 function Playlist({videos, deleteVideo}) {
 	const [visible, setVisibility] = useState(false);
-	const playlist = useRef(null);
-	const [mouseY, setMouseY] = useState(0);
-	const [placed, setPlaced] = useState(false);
+	const [mouseIn, setMouseIn] = useState(false); 
+
 	function handleMouseEnter () {
 		setVisibility(true);
+		setMouseIn(false);
 	}
 	
 	function handleMouseLeave () {
-		setVisibility(false);
-		setPlaced(false);
-	}
-
-	function setMousePos(event) {
-		setMouseY(event.clientY);
-	}
-
-	document.addEventListener("mousemove", setMousePos);
-	useEffect(() => {
-		if (visible && !placed) {
-			playlist.current.style.top = mouseY - 130 + "px";
-			setPlaced(true);
+		if (mouseIn) {
+			setVisibility(false);
+			setMouseIn(false);
 		}
+	}
 
-	}, [visible]);
-
-	
+	function handleMouseEnterPlaylist() {
+		setMouseIn(true)
+	}
 
 
 	if (visible) {
-
 		return (
 			<div
 				id="videoPlaylist"
-				ref={playlist}
 				onMouseLeave={handleMouseLeave}
-				className="w-1/4 absolute right-0 top-0">
+				onMouseEnter={handleMouseEnterPlaylist}
+				className="pl-4 bg-black/70 rounded-l-lg w-1/4 absolute right-0 top-0">
 				<div className="h-8">
 					Playlist
 				</div>
-				<div className="text-l text-white
-					bg-black/70">
 					{videos?.map((vid, index: number) => {
 						return <VideoPlaylistItem
 						video={vid}
 								   deleteVideo={deleteVideo} />
 					})}
-				</div>
 				<div>
 				</div>
 			</div>
@@ -260,8 +247,7 @@ function VideoPlaylistItem ({ video, deleteVideo }) {
 	
 	return (
 		<div
-
-			className="py-2 px-2 hover:bg-white hover:text-black
+			className="pl-6 py-2 px-2 rounded-l-full bg-black/70 hover:bg-white hover:text-black
 			hover:transition hover:duration-200 hover:ease-in-out"
 			key={video.id}>
 			<button
