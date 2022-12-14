@@ -14,4 +14,6 @@ checa se o now() já passou
 ** pesquisa videos
 *** adicionar uma função para rodar depois de alguns segundos
 **** chamar a api
+* montar um contexto
+** colocar as coisas do estado da aplicação
 

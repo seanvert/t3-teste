@@ -3,13 +3,6 @@ import { z } from "zod";
 import { router, publicProcedure, protectedProcedure } from "../trpc";
 
 export const videosRouter = router({
-  hello: publicProcedure
-    .input(z.object({ text: z.string().nullish() }).nullish())
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input?.text ?? "world"}`,
-      };
-    }),
 	postVideo: protectedProcedure
 		.input( z.object({
 			name: z.string(),
@@ -31,7 +24,7 @@ export const videosRouter = router({
 				.then((json) => {
 					console.log(json.snippet.title)
 					if(typeof(json.snippet.title) != "undefined") {
-						return ctx.prisma.Video.create({
+						return ctx.prisma.video.create({
 							data: {
 								name: json.snippet.title,
 								link: `${input?.link}`,
@@ -39,7 +32,7 @@ export const videosRouter = router({
 							}
 						})
 					} else {
-						return ctx.prisma.Video.create({
+						return ctx.prisma.video.create({
 							data: {
 								name: `${input?.name}`,
 								link: `${input?.link}`,
@@ -57,7 +50,7 @@ export const videosRouter = router({
 		}))
 		.mutation(({ ctx, input }) => {
 			console.log("input", input);
-			return ctx.prisma.Video.update({
+			return ctx.prisma.video.update({
 				where: {
 					id: `${input?.id}`,
 				},
@@ -69,7 +62,7 @@ export const videosRouter = router({
 		}),
 	getAll: publicProcedure.query(({ ctx }) => {
 		try {
-			return ctx.prisma.Video.findMany({
+			return ctx.prisma.video.findMany({
 				orderBy: {
 					createdAt: "asc",
 				}
@@ -83,7 +76,7 @@ export const videosRouter = router({
 			id: z.string()
 		}))
 		.mutation(({ ctx, input }) => {
-			return ctx.prisma.Video.delete({
+			return ctx.prisma.video.delete({
 				where: {
 					id: `${input?.id}`
 				}

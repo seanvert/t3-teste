@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { trpc } from "../utils/trpc";
-import _ from "lodash";
 
 enum QueriesTypesYT {
     Text,
@@ -10,7 +9,7 @@ enum QueriesTypesYT {
 function getIDFromYTURL(url: String) {
     var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = url.match(regExp);
-    if (match && match[2].length == 11) {
+    if (match && match[2] && match[2].length == 11) {
         return match[2];
     } else {
         //error
@@ -18,9 +17,6 @@ function getIDFromYTURL(url: String) {
         return "";
     }
 };
-
-// FIXME this is being called more than once
-const throttledFunction = _.throttle(console.log, 5000);
 
 
 export function YTQueryBox() {
@@ -33,12 +29,12 @@ export function YTQueryBox() {
     const [ytResults, setYTResults] = useState([]);
     const [ytQueryType, setYTQueryType] = useState(QueriesTypesYT.Text);
 
-    function handleSubmit(e: React.FormEvent<HTMLInputElement>) {
+    function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
         switch (ytQueryType) {
             case QueriesTypesYT.Text:
 				refetchYT();
-				setYTResults(ytQueryResponseData);
+				setYTResults(ytQueryResponseData.items);
                 break;
             case QueriesTypesYT.Link:
                 const ytVideoID = getIDFromYTURL(query);
@@ -71,7 +67,6 @@ export function YTQueryBox() {
 		setQuery(key)
 			/* setYTResults(ytQueryResponseData); */
 		/* TODO chamar a fun*/
-		throttledFunction("fodase");
     };
 
 
@@ -134,7 +129,7 @@ function CompletionItem({ result, setQuery, postVideo }) {
 		setQuery("");
 	};
 
-	function formatTitleString(text) {
+	function formatTitleString(text: string) {
 		if (text.length > 43) {
 			return text.substring(0, 38) + "…";
 		} else {
